@@ -16,7 +16,11 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  /* system.css already sets the polka-dot desktop background on body */
+  /* Classic Mac OS dithered gray desktop */
+  background-color: #aaaaaa !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect x='0' y='0' width='1' height='1' fill='%23888'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23888'/%3E%3C/svg%3E") !important;
+  background-repeat: repeat !important;
+  background-size: 2px 2px !important;
 }
 
 /* ── Menu Bar ──────────────────────────────────────────────────────────── */
@@ -26,14 +30,17 @@ body {
   left: 0;
   right: 0;
   z-index: 200;
-  border-bottom: 1px solid var(--secondary, #000);
   background: var(--primary, #fff);
+  border-bottom: 1px solid #000;
   height: var(--menubar-height);
+  box-shadow: 0 1px 0 #000;
 }
 
 #main-nav ul[role="menu-bar"] {
   height: var(--menubar-height);
   align-items: stretch;
+  margin: 0;
+  padding: 0;
 }
 
 #main-nav ul[role="menu-bar"] > [role="menu-item"] {
@@ -41,11 +48,28 @@ body {
   align-items: center;
   padding: 0 10px;
   font-size: 0.82rem;
+  border-right: 1px solid #ccc;
+  cursor: default;
+}
+
+#main-nav ul[role="menu-bar"] > [role="menu-item"]:last-child {
+  border-right: none;
 }
 
 #main-nav ul[role="menu-bar"] > [role="menu-item"] a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Texto blanco en hover/focus de items del dropdown */
+#main-nav ul[role="menu"] [role="menu-item"]:hover,
+#main-nav ul[role="menu"] [role="menu-item"]:focus-within {
+  color: var(--primary, #fff);
+}
+
+#main-nav ul[role="menu"] [role="menu-item"]:hover a,
+#main-nav ul[role="menu"] [role="menu-item"]:focus-within a {
+  color: var(--primary, #fff);
 }
 
 #main-nav ul[role="menu-bar"] > [role="menu-item"] > strong {
@@ -58,12 +82,14 @@ body {
   padding: 0 12px !important;
 }
 
-/* Language menu + clock pushed to right */
+/* Language menu next to Contact */
 .lang-menu {
-  margin-left: auto;
+  /* sin margin-left: auto para que quede junto al item Contacto */
 }
 
+/* Clock pushed to the far right */
 .menu-clock {
+  margin-left: auto;
   padding: 0 12px !important;
   font-size: 0.8rem !important;
   white-space: nowrap;

@@ -44,7 +44,7 @@ function renderMenuBar() {
   nav.innerHTML = `
     <ul role="menu-bar">
       <li role="menu-item" tabindex="0" aria-haspopup="true" class="apple-menu">
-        <span>&#x1F4BB;</span>
+        <img src="/favicon.svg" alt="menu" width="16" height="16" style="vertical-align:middle;" />
         <ul role="menu">
           <li role="menu-item"><a href="#hero">portfolio</a></li>
           <li role="menu-item" class="divider"></li>
@@ -178,8 +178,8 @@ function renderProjects() {
         </div>
         <div class="separator"></div>
         <div class="project-actions">
-          <button class="btn">&#x1F4C2; ${t("projects.viewCode")}</button>
-          <button class="btn btn-default">&#x1F310; ${t("projects.viewDemo")}</button>
+          <button class="btn">${t("projects.viewCode")}</button>
+          <button class="btn btn-default">${t("projects.viewDemo")}</button>
         </div>
       </div>
     </div>
@@ -223,14 +223,14 @@ function renderContact() {
           <div class="field-row">
             <textarea rows="5" placeholder="${t("contact.messagePlaceholder")}" required></textarea>
           </div>
-          <button type="submit" class="btn btn-default">&#x2709; ${t("contact.send")}</button>
+          <button type="submit" class="btn btn-default">${t("contact.send")}</button>
         </form>
         <div class="separator"></div>
         <p>${t("contact.orFind")}</p>
         <div class="social-links">
-          <a href="https://github.com" target="_blank" rel="noopener"><button class="btn">&#x1F431; GitHub</button></a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener"><button class="btn">&#x1F4BC; LinkedIn</button></a>
-          <a href="mailto:tu@email.com"><button class="btn">&#x1F4E7; Email</button></a>
+          <a href="https://github.com" target="_blank" rel="noopener"><button class="btn">GitHub</button></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener"><button class="btn">LinkedIn</button></a>
+          <a href="mailto:tu@email.com"><button class="btn">Email</button></a>
         </div>
       </div>
     </div>

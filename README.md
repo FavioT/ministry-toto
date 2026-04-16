@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Portfolio logo" width="100" />
   <h1>Portfolio — Desarrollador Web</h1>
-  <p>Página de portfolio personal. Minimalista, mobile-first, con estética retro macOS Classic.</p>
+  <p>Página de portfolio personal. Minimalista, mobile-first, con estética macOS Classic.</p>
 
   ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
   ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
@@ -13,7 +13,7 @@
 
 ## Vista previa
 
-> Interfaz inspirada en Windows 98 usando el framework [98.css](https://jdan.github.io/98.css/), con cambio de idioma ES/EN integrado.
+> Interfaz con estética macOS Classic usando el framework [system.css](https://sakofchit.github.io/system.css/), con cambio de idioma ES/EN integrado.
 
 ---
 
