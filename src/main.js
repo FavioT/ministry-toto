@@ -1,4 +1,4 @@
-import "@sakun/system.css";
+import "@sakun/system.css/style.css";
 import "./style.css";
 import { translations } from "./i18n.js";
 
@@ -31,7 +31,7 @@ const skills = {
 };
 
 function render() {
-  renderNav();
+  renderMenuBar();
   renderHero();
   renderAbout();
   renderSkills();
@@ -40,26 +40,53 @@ function render() {
   renderFooter();
 }
 
-function renderNav() {
+function renderMenuBar() {
   const nav = document.getElementById("main-nav");
   nav.innerHTML = `
-    <div class="nav-inner">
-      <span class="nav-logo">&#x1F4BB; portfolio</span>
-      <div class="nav-links">
-        <a href="#about">${t("nav.about")}</a>
-        <a href="#skills">${t("nav.skills")}</a>
+    <ul role="menu-bar">
+      <li role="menu-item" tabindex="0" aria-haspopup="true" class="apple-menu">
+        <span>&#x1F4BB;</span>
+        <ul role="menu">
+          <li role="menu-item"><a href="#hero">portfolio</a></li>
+          <li role="menu-item" class="divider"></li>
+          <li role="menu-item"><button class="lang-btn${currentLang === "es" ? " active" : ""}" data-lang="es">Español</button></li>
+          <li role="menu-item"><button class="lang-btn${currentLang === "en" ? " active" : ""}" data-lang="en">English</button></li>
+        </ul>
+      </li>
+      <li role="menu-item" tabindex="0" aria-haspopup="true">
+        <strong>${t("nav.about")}</strong>
+        <ul role="menu">
+          <li role="menu-item"><a href="#about">${t("about.windowTitle")}</a></li>
+          <li role="menu-item"><a href="#skills">${t("skills.windowTitle")}</a></li>
+        </ul>
+      </li>
+      <li role="menu-item" tabindex="0" aria-haspopup="false">
         <a href="#projects">${t("nav.projects")}</a>
+      </li>
+      <li role="menu-item" tabindex="0" aria-haspopup="false">
         <a href="#contact">${t("nav.contact")}</a>
-      </div>
-      <div class="lang-switcher">
-        <button class="lang-btn${currentLang === "es" ? " active" : ""}" data-lang="es">ES</button>
-        <button class="lang-btn${currentLang === "en" ? " active" : ""}" data-lang="en">EN</button>
-      </div>
-    </div>
+      </li>
+      <li role="menu-item" tabindex="0" aria-haspopup="true" class="lang-menu">
+        <span>${currentLang.toUpperCase()}</span>
+        <ul role="menu">
+          <li role="menu-item"><button class="lang-btn${currentLang === "es" ? " active" : ""}" data-lang="es">ES — Español</button></li>
+          <li role="menu-item"><button class="lang-btn${currentLang === "en" ? " active" : ""}" data-lang="en">EN — English</button></li>
+        </ul>
+      </li>
+      <li role="menu-item" aria-haspopup="false" class="menu-clock" id="menu-clock"></li>
+    </ul>
   `;
   nav.querySelectorAll(".lang-btn").forEach((btn) =>
     btn.addEventListener("click", () => setLang(btn.dataset.lang))
   );
+  updateClock();
+}
+
+function updateClock() {
+  const el = document.getElementById("menu-clock");
+  if (!el) return;
+  const now = new Date();
+  el.textContent = now.toLocaleTimeString(currentLang, { hour: "2-digit", minute: "2-digit" });
 }
 
 function renderHero() {
@@ -223,6 +250,7 @@ function renderFooter() {
 
 document.addEventListener("DOMContentLoaded", () => {
   render();
+  const clockInterval = setInterval(updateClock, 30000);
+  window.addEventListener("beforeunload", () => clearInterval(clockInterval));
 });
-
 
