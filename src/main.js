@@ -24,9 +24,9 @@ function updateLangButtons() {
 }
 
 const skills = {
-  frontend: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Vue.js"],
-  backend: ["Node.js", "Python", "Express", "PostgreSQL", "MongoDB", "REST API"],
-  tools: ["Git", "Docker", "Vite", "Figma", "Linux", "VS Code"],
+  frontend: ["Angular", "SCSS", "Vanilla JS", "TypeScript", "React", "AngularJS"],
+  backend: ["Node.js", "Python", "Express", "PostgreSQL", "MongoDB", ".NET"],
+  tools: ["Git", "Vercel", "Vite", "Figma", "Bootstrap", "Azure"],
 };
 
 function render() {
@@ -228,9 +228,9 @@ function renderContact() {
         <div class="separator"></div>
         <p>${t("contact.orFind")}</p>
         <div class="social-links">
-          <a href="https://github.com" target="_blank" rel="noopener"><button class="btn">GitHub</button></a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener"><button class="btn">LinkedIn</button></a>
-          <a href="mailto:tu@email.com"><button class="btn">Email</button></a>
+          <a href="https://github.com/FavioT/" target="_blank" rel="noopener"><button class="btn">GitHub</button></a>
+          <a href="https://linkedin.com/in/lorem-ipsum" target="_blank" rel="noopener"><button class="btn">LinkedIn</button></a>
+          <a href="mailto:favio.tschanza@outlook.es"><button class="btn">Email</button></a>
         </div>
       </div>
     </div>

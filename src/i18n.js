@@ -8,7 +8,7 @@ export const translations = {
     },
     hero: {
       greeting: "Hola, soy",
-      name: "Tu Nombre",
+      name: "Favio Tschanz",
       title: "Desarrollador Web Full Stack",
       subtitle: "Construyo experiencias digitales simples y funcionales.",
       cta: "Ver proyectos",
