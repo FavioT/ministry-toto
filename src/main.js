@@ -1,4 +1,3 @@
-import "@sakun/system.css/style.css";
 import "./style.css";
 import { translations } from "./i18n.js";
 
