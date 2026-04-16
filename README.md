@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Portfolio logo" width="100" />
   <h1>Portfolio — Desarrollador Web</h1>
-  <p>Página de portfolio personal. Minimalista, mobile-first, con estética retro OS.</p>
+  <p>Página de portfolio personal. Minimalista, mobile-first, con estética retro macOS Classic.</p>
 
   ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
   ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
@@ -24,7 +24,7 @@
 | HTML5 | Estructura semántica |
 | Vanilla CSS | Estilos custom, mobile-first |
 | Vanilla JS | Lógica, i18n, render dinámico |
-| [98.css](https://jdan.github.io/98.css/) | Framework CSS estilo retro OS |
+| [system.css](https://sakofchit.github.io/system.css/) | Framework CSS estilo retro macOS Classic |
 | [Vite](https://vitejs.dev/) | Build tool + servidor de desarrollo |
 
 ---

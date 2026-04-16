@@ -10,11 +10,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Portfolio personal de desarrollador web. Interfaz minimalista con estética retro OS (Windows 98), soporte bilingüe ES/EN y diseño mobile-first. Construido con HTML, CSS y JavaScript vanilla usando Vite y 98.css.",
+  "description": "Portfolio personal de desarrollador web. Interfaz minimalista con estética retro macOS Classic, soporte bilingüe ES/EN y diseño mobile-first. Construido con HTML, CSS y JavaScript vanilla usando Vite y system.css.",
   "devDependencies": {
     "vite": "^6.4.2"
   },
   "dependencies": {
-    "98.css": "^0.1.21"
+    "@sakun/system.css": "github:sakofchit/system.css"
   }
 }
