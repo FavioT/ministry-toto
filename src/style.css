@@ -4,107 +4,134 @@
 }
 
 :root {
-  --max-width: 860px;
-  --section-gap: 1.5rem;
-  --nav-height: 48px;
+  --menubar-height: 32px;
+  --footer-height: 28px;
 }
 
 html {
-  scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #AAAAAA; /* Classic Mac desktop grey */
   min-height: 100vh;
+  /* system.css already sets the polka-dot desktop background on body */
 }
 
-/* ── Nav ───────────────────────────────────────────────────────────────── */
+/* ── Menu Bar ──────────────────────────────────────────────────────────── */
 #main-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
-  background: #FFFFFF;
-  border-bottom: 1px solid #000;
-  padding: 0 1rem;
-  height: var(--nav-height);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  border-bottom: 1px solid var(--secondary, #000);
+  background: var(--primary, #fff);
+  height: var(--menubar-height);
 }
 
-.nav-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  height: 100%;
+#main-nav ul[role="menu-bar"] {
+  height: var(--menubar-height);
+  align-items: stretch;
+}
+
+#main-nav ul[role="menu-bar"] > [role="menu-item"] {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  padding: 0 10px;
+  font-size: 0.82rem;
 }
 
-.nav-logo {
-  font-weight: bold;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  flex-shrink: 0;
-  font-family: Chicago, Arial, sans-serif;
-}
-
-.nav-links {
-  display: flex;
-  gap: 0.1rem;
-  flex: 1;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.nav-links a {
+#main-nav ul[role="menu-bar"] > [role="menu-item"] a {
   text-decoration: none;
   color: inherit;
-  padding: 0.2rem 0.7rem;
-  font-size: 0.85rem;
 }
 
-.nav-links a:hover {
-  background: #000;
-  color: #fff;
+#main-nav ul[role="menu-bar"] > [role="menu-item"] > strong {
+  font-family: Chicago_12, Chicago, sans-serif;
 }
 
-.lang-switcher {
-  display: flex;
-  gap: 0.25rem;
-  flex-shrink: 0;
+/* Apple menu leftmost */
+.apple-menu {
+  font-size: 1rem !important;
+  padding: 0 12px !important;
 }
 
-.lang-btn {
-  font-size: 0.75rem !important;
-  padding: 1px 8px !important;
-  cursor: pointer;
+/* Language menu + clock pushed to right */
+.lang-menu {
+  margin-left: auto;
 }
 
-.lang-btn.active {
-  background: #000 !important;
-  color: #fff !important;
+.menu-clock {
+  padding: 0 12px !important;
+  font-size: 0.8rem !important;
+  white-space: nowrap;
+  cursor: default !important;
+  font-family: Chicago_12, Chicago, sans-serif;
 }
 
-/* ── Layout ────────────────────────────────────────────────────────────── */
-#app {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 1.5rem 1rem var(--section-gap);
-  display: flex;
-  flex-direction: column;
-  gap: var(--section-gap);
+.menu-clock:hover,
+.menu-clock:focus-within {
+  background: transparent !important;
+  color: inherit !important;
 }
 
-section {
+/* Dropdown menu buttons (lang switcher) */
+#main-nav ul[role="menu"] .lang-btn {
+  all: unset;
+  position: relative;
+  padding: 5px 20px;
+  display: block;
   width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: Chicago_12, Chicago, sans-serif;
+  font-size: 1em;
 }
+
+#main-nav ul[role="menu"] .lang-btn:hover,
+#main-nav ul[role="menu"] .lang-btn.active {
+  background: var(--secondary, #000);
+  color: var(--primary, #fff);
+}
+
+/* ── Desktop ───────────────────────────────────────────────────────────── */
+#desktop {
+  margin-top: var(--menubar-height);
+  margin-bottom: var(--footer-height);
+  min-height: calc(100vh - var(--menubar-height) - var(--footer-height));
+  padding: 1.5rem 1rem 2rem;
+}
+
+/* ── Desktop window grid ───────────────────────────────────────────────── */
+#app {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "hero"
+    "about"
+    "skills"
+    "projects"
+    "contact";
+  gap: 1.25rem;
+}
+
+#hero    { grid-area: hero; }
+#about   { grid-area: about; }
+#skills  { grid-area: skills; }
+#projects { grid-area: projects; }
+#contact { grid-area: contact; }
 
 /* ── Window overrides ──────────────────────────────────────────────────── */
 .window-pane {
-  padding: 1rem;
+  padding: 1rem 1.25rem;
   overflow: visible !important;
   height: auto !important;
   max-height: none !important;
+  font-size: 0.88rem !important;
 }
 
 .modeless-dialog,
@@ -248,22 +275,27 @@ section {
   text-decoration: none;
 }
 
-/* ── Footer ────────────────────────────────────────────────────────────── */
+/* ── Footer / Status bar ───────────────────────────────────────────────── */
 #main-footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  height: var(--footer-height);
 }
 
 .details-bar {
-  background: #fff;
-  border-top: 1px solid #000;
+  background: var(--primary, #fff);
+  border-top: 1px solid var(--secondary, #000);
   padding: 0.3rem 1rem;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
-  max-width: 100%;
+  height: 100%;
+  align-items: center;
 }
 
 /* ── Responsive ────────────────────────────────────────────────────────── */
@@ -282,7 +314,27 @@ section {
   }
 }
 
-@media (min-width: 860px) {
+@media (min-width: 720px) {
+  #app {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "hero    hero"
+      "about   skills"
+      "projects projects"
+      "contact contact";
+  }
+}
+
+@media (min-width: 1000px) {
+  #app {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "hero     hero"
+      "about    skills"
+      "projects projects"
+      "contact  contact";
+  }
+
   .projects-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -301,3 +353,4 @@ section {
   font-weight: bold !important;
   margin-bottom: 0.75rem !important;
 }
+
