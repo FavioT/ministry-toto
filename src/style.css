@@ -1,0 +1,280 @@
+/* ── Reset / Base ──────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --max-width: 860px;
+  --section-gap: 2rem;
+  --nav-height: 52px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #008080; /* teal retro desktop */
+  min-height: 100vh;
+  font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+}
+
+/* ── Nav ───────────────────────────────────────────────────────────────── */
+#main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #c0c0c0;
+  border-bottom: 2px solid #808080;
+  box-shadow: 0 2px 0 #fff inset, 0 -2px 0 #707070 inset;
+  padding: 0 1rem;
+  height: var(--nav-height);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-logo {
+  font-weight: bold;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+.nav-links a:hover {
+  background: #000080;
+  color: #fff;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  font-size: 0.75rem;
+  padding: 2px 8px !important;
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  background: #000080 !important;
+  color: #fff !important;
+}
+
+/* ── Layout ────────────────────────────────────────────────────────────── */
+#app {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem 1rem var(--section-gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+section {
+  width: 100%;
+}
+
+/* ── Hero ──────────────────────────────────────────────────────────────── */
+.hero-body {
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.hero-greeting {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.hero-name {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-weight: bold;
+}
+
+.hero-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: #000080;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  margin: 0 0 1.5rem;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-actions a {
+  text-decoration: none;
+}
+
+/* ── About ─────────────────────────────────────────────────────────────── */
+.about-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  border-top: 1px solid #808080;
+  padding-top: 0.75rem;
+}
+
+/* ── Skills ────────────────────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.skill-panel fieldset {
+  margin: 0;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.5rem 0 0.25rem;
+}
+
+.skill-tag {
+  background: #000080;
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 0.78rem;
+  border: 1px solid #00004a;
+  white-space: nowrap;
+}
+
+/* ── Projects ──────────────────────────────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.project-card {
+  margin: 0;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.75rem 0;
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ── Contact ───────────────────────────────────────────────────────────── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.form-row input,
+.form-row textarea {
+  width: 100%;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-links a {
+  text-decoration: none;
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────── */
+#main-footer {
+  position: sticky;
+  bottom: 0;
+}
+
+#main-footer .status-bar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive: tablet/desktop ────────────────────────────────────────── */
+@media (min-width: 600px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-meta {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 860px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Window tweaks ─────────────────────────────────────────────────────── */
+.window-body h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.window-body p {
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.window-body hr {
+  border: none;
+  border-top: 1px solid #808080;
+  margin: 1rem 0;
+}
+
