@@ -25,7 +25,7 @@ function updateLangButtons() {
 
 const skills = {
   frontend: ["Angular", "SCSS", "Vanilla JS", "TypeScript", "React", "AngularJS"],
-  backend: ["Node.js", "Python", "Express", "PostgreSQL", "MongoDB", ".NET"],
+  backend: ["Node.js", "Python", "Express", "PostgreSQL", "MongoDB", ".NET", "PHP"],
   tools: ["Git", "Vercel", "Vite", "Figma", "Bootstrap", "Azure"],
 };
 
@@ -126,7 +126,6 @@ function renderAbout() {
         <p>${t("about.p2")}</p>
         <div class="separator"></div>
         <div class="about-meta">
-          <span>${t("about.location")}</span>
           <span>${t("about.available")}</span>
         </div>
       </div>
@@ -178,8 +177,8 @@ function renderProjects() {
         </div>
         <div class="separator"></div>
         <div class="project-actions">
-          <button class="btn">${t("projects.viewCode")}</button>
-          <button class="btn btn-default">${t("projects.viewDemo")}</button>
+          ${p.viewCode ? `<a href="${p.viewCode}" target="_blank" rel="noopener"><button class="btn">${t("projects.viewCode")}</button></a>` : `<button class="btn" disabled>${t("projects.viewCode")}</button>`}
+          ${p.viewDemo && p.viewDemo !== "Demo" ? `<a href="${p.viewDemo}" target="_blank" rel="noopener"><button class="btn btn-default">${t("projects.viewDemo")}</button></a>` : `<button class="btn btn-default" disabled>${t("projects.viewDemo")}</button>`}
         </div>
       </div>
     </div>
