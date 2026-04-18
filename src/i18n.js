@@ -45,7 +45,7 @@ export const translations = {
         {
           title: "Finanzas Personales",
           description:
-            "app para tracking de finanzas personales/familiares. Se puede importar el extracto del resumen de la cuenta de banco (XLS) y los resumenes de las tarjetas de crédito, se visualizan datos con budget mensual y deuda.",
+            "App para tracking de finanzas personales/familiares. Se puede importar el extracto del resumen de la cuenta de banco (XLS) y los resumenes de las tarjetas de crédito, se visualizan datos con budget mensual y deuda.",
           tags: ["Python", "Javascript", "PostgreSQL"],
           viewCode: "https://github.com/FavioT/my-personal-finances",
           viewDemo: "https://deprestadovivo.vercel.app/login",
@@ -53,8 +53,9 @@ export const translations = {
         {
           title: "Survival Famosos",
           description:
-            "Proyecto de juego de fantasia inspirado en Necroprode",
+            "Proyecto de juego de fantasia inspirado en Necroprode.",
           tags: ["Angular", "Typescript", "SCSS"],
+          viewCode: "https://github.com/FavioT/infame-elimination-pool",
         },
       ],
     },
@@ -119,16 +120,19 @@ export const translations = {
           viewDemo: "Demo",
         },
         {
-          title: "Project Beta",
+          title: "Personal Finances",
           description:
-            "CLI tool to automate repetitive development tasks. Published on npm with over 500 downloads.",
-          tags: ["Node.js", "CLI", "npm"],
+            "App for tracking personal and family finances. It allows importing bank account statements (XLS) and credit card summaries, with data visualized through monthly budgets and debt tracking.",
+          tags: ["Python", "Javascript", "PostgreSQL"],
+          viewCode: "https://github.com/FavioT/my-personal-finances",
+          viewDemo: "https://deprestadovivo.vercel.app/login",
         },
         {
-          title: "Project Gamma",
+          title: "Fame Elimination Pool",
           description:
-            "Static website generated with a custom SSG. Focused on performance and accessibility.",
-          tags: ["HTML", "CSS", "JavaScript"],
+            "Fantasy game project inspired by Necroprode.",
+          tags: ["Angular", "Typescript", "SCSS"],
+          viewCode: "https://github.com/FavioT/infame-elimination-pool",
         },
       ],
     },
