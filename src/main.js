@@ -103,7 +103,7 @@ function renderHero() {
         <p class="hero-title">${t("hero.title")}</p>
         <p class="hero-subtitle">${t("hero.subtitle")}</p>
         <div class="hero-actions">
-          <a href="#projects"><button class="btn btn-default">${t("hero.cta")}</button></a>
+          <a href="#projects"><button class="btn">${t("hero.cta")}</button></a>
           <a href="#contact"><button class="btn">${t("hero.ctaContact")}</button></a>
         </div>
       </div>
@@ -178,7 +178,7 @@ function renderProjects() {
         <div class="separator"></div>
         <div class="project-actions">
           ${p.viewCode ? `<a href="${p.viewCode}" target="_blank" rel="noopener"><button class="btn">${t("projects.viewCode")}</button></a>` : `<button class="btn" disabled>${t("projects.viewCode")}</button>`}
-          ${p.viewDemo && p.viewDemo !== "Demo" ? `<a href="${p.viewDemo}" target="_blank" rel="noopener"><button class="btn btn-default">${t("projects.viewDemo")}</button></a>` : `<button class="btn btn-default" disabled>${t("projects.viewDemo")}</button>`}
+          ${p.viewDemo && p.viewDemo !== "Demo" ? `<a href="${p.viewDemo}" target="_blank" rel="noopener"><button class="btn">${t("projects.viewDemo")}</button></a>` : `<button class="btn btn-default" disabled>${t("projects.viewDemo")}</button>`}
         </div>
       </div>
     </div>

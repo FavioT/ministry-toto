@@ -19,7 +19,7 @@ export const translations = {
       heading: "Sobre mí",
       p1: "Desarrollo aplicaciones web poniendo el foco en que funcionen bien y se entiendan fácil. Tengo basta experiencia (10+ años) en proyectos de diferentes tipos y roles. Me gusta trabajar en equipo.",
       p2: "Suelo moverme cómodo entre tecnologías como Angular, React o TypeScript en el front, y Node.js o Python en el back, apoyándome en bases de datos como PostgreSQL o MongoDB según el caso.",
-      available: "✅ Disponible para proyectos freelance",
+      available: 'Disponible para proyectos freelance',
     },
     skills: {
       windowTitle: "habilidades.exe",
@@ -75,7 +75,6 @@ export const translations = {
       rights: "Todos los derechos reservados.",
     },
   },
-
   en: {
     nav: {
       about: "About",
@@ -96,7 +95,7 @@ export const translations = {
       heading: "About Me",
       p1: "I develop web applications with a focus on making them work well and remain easy to understand. I have extensive experience (10+ years) across different types of projects and roles. I enjoy working in a team environment.",
       p2: "I’m comfortable working with technologies like Angular, React, and TypeScript on the front end, and Node.js or Python on the back end, using databases such as PostgreSQL or MongoDB depending on the needs of the project.",
-      available: "✅ Available for freelance projects",
+      available: 'Available for freelance projects',
     },
     skills: {
       windowTitle: "skills.exe",
@@ -117,7 +116,7 @@ export const translations = {
             "A website that transforms ESPN Fantasy Basketball data into a retro-style dashboard inspired by classic SNES video games.",
           tags: ["Python", "Flask", "Javascript"],
           viewCode: "https://github.com/FavioT/my-private-fantasy-league",
-          viewDemo: "Demo",
+          viewDemo: "https://andate-silver.vercel.app/",
         },
         {
           title: "Personal Finances",
