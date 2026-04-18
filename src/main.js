@@ -93,7 +93,7 @@ function renderHero() {
     <div class="window standard-dialog hero-window">
       <div class="title-bar">
         <button aria-label="Close" class="close"></button>
-        <h1 class="title">welcome.exe</h1>
+        <h1 class="title">welcome</h1>
         <button aria-label="Resize" class="resize"></button>
       </div>
       <div class="separator"></div>
@@ -224,8 +224,19 @@ function renderContact() {
           </div>
           <button type="submit" class="btn btn-default">${t("contact.send")}</button>
         </form>
-        <div class="separator"></div>
-        <p>${t("contact.orFind")}</p>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("social").innerHTML = `
+    <div class="window modeless-dialog">
+      <div class="title-bar">
+        <button aria-label="Close" class="close"></button>
+        <h1 class="title">${t("contact.orFind")}</h1>
+        <button aria-label="Resize" class="resize"></button>
+      </div>
+      <div class="separator"></div>
+      <div class="window-pane">
         <div class="social-links">
           <a href="https://github.com/FavioT/" target="_blank" rel="noopener"><button class="btn">GitHub</button></a>
           <a href="https://linkedin.com/in/lorem-ipsum" target="_blank" rel="noopener"><button class="btn">LinkedIn</button></a>

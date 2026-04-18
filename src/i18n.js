@@ -22,7 +22,7 @@ export const translations = {
       available: 'Disponible para proyectos freelance',
     },
     skills: {
-      windowTitle: "habilidades.exe",
+      windowTitle: "habilidades",
       heading: "Habilidades",
       frontend: "Frontend",
       backend: "Backend",
@@ -67,7 +67,7 @@ export const translations = {
       emailPlaceholder: "tu@email.com",
       messagePlaceholder: "Escribe tu mensaje aquí...",
       send: "Enviar mensaje",
-      orFind: "O encuéntrame en:",
+      orFind: "Encuéntrame",
     },
     footer: {
       built: "Construido con",
@@ -98,7 +98,7 @@ export const translations = {
       available: 'Available for freelance projects',
     },
     skills: {
-      windowTitle: "skills.exe",
+      windowTitle: "skills",
       heading: "Skills",
       frontend: "Frontend",
       backend: "Backend",
@@ -143,7 +143,7 @@ export const translations = {
       emailPlaceholder: "you@email.com",
       messagePlaceholder: "Write your message here...",
       send: "Send message",
-      orFind: "Or find me on:",
+      orFind: "find me on:",
     },
     footer: {
       built: "Built with",
