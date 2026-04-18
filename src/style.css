@@ -334,6 +334,26 @@ body {
   text-decoration: none;
 }
 
+/* Estados del formulario de contacto */
+.contact-status {
+  font-size: 0.82rem;
+  min-height: 1.2em;
+}
+
+.contact-status--loading {
+  color: #555;
+}
+
+.contact-status--success {
+  color: #1a7a1a;
+  font-weight: bold;
+}
+
+.contact-status--error {
+  color: #b00;
+  font-weight: bold;
+}
+
 /* ── Footer / Status bar ───────────────────────────────────────────────── */
 #main-footer {
   position: fixed;

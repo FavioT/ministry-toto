@@ -67,6 +67,9 @@ export const translations = {
       emailPlaceholder: "tu@email.com",
       messagePlaceholder: "Escribe tu mensaje aquí...",
       send: "Enviar mensaje",
+      sending: "Enviando...",
+      success: "Mensaje enviado correctamente.",
+      error: "Ocurrió un error al enviar. Por favor intenta nuevamente.",
       orFind: "Encuéntrame",
     },
     footer: {
@@ -143,6 +146,9 @@ export const translations = {
       emailPlaceholder: "you@email.com",
       messagePlaceholder: "Write your message here...",
       send: "Send message",
+      sending: "Sending...",
+      success: "Message sent successfully.",
+      error: "An error occurred. Please try again.",
       orFind: "find me on:",
     },
     footer: {

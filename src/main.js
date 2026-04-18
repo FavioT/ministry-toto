@@ -1,5 +1,6 @@
 import "./style.css";
 import { translations } from "./i18n.js";
+import { sendContactEmail } from "./emailjs.js";
 
 let currentLang = localStorage.getItem("lang") || "es";
 
@@ -212,21 +213,48 @@ function renderContact() {
       <div class="window-pane">
         <p class="heading">${t("contact.heading")}</p>
         <p>${t("contact.intro")}</p>
-        <form class="contact-form" onsubmit="return false;">
+        <form class="contact-form" id="contact-form">
           <div class="field-row">
-            <input type="text" placeholder="${t("contact.namePlaceholder")}" required />
+            <input id="contact-name" type="text" placeholder="${t("contact.namePlaceholder")}" required />
           </div>
           <div class="field-row">
-            <input type="email" placeholder="${t("contact.emailPlaceholder")}" required />
+            <input id="contact-email" type="email" placeholder="${t("contact.emailPlaceholder")}" required />
           </div>
           <div class="field-row">
-            <textarea rows="5" placeholder="${t("contact.messagePlaceholder")}" required></textarea>
+            <textarea id="contact-message" rows="5" placeholder="${t("contact.messagePlaceholder")}" required></textarea>
           </div>
-          <button type="submit" class="btn btn-default">${t("contact.send")}</button>
+          <div id="contact-status" class="contact-status" aria-live="polite"></div>
+          <button type="submit" class="btn btn-default" id="contact-submit">${t("contact.send")}</button>
         </form>
       </div>
     </div>
   `;
+
+  document.getElementById("contact-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name    = document.getElementById("contact-name").value.trim();
+    const email   = document.getElementById("contact-email").value.trim();
+    const message = document.getElementById("contact-message").value.trim();
+    const status  = document.getElementById("contact-status");
+    const submit  = document.getElementById("contact-submit");
+
+    submit.disabled = true;
+    status.className = "contact-status contact-status--loading";
+    status.textContent = t("contact.sending");
+
+    try {
+      await sendContactEmail({ name, email, message });
+      status.className = "contact-status contact-status--success";
+      status.textContent = t("contact.success");
+      document.getElementById("contact-form").reset();
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      status.className = "contact-status contact-status--error";
+      status.textContent = t("contact.error");
+    } finally {
+      submit.disabled = false;
+    }
+  });
 
   document.getElementById("social").innerHTML = `
     <div class="window modeless-dialog">

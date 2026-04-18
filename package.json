@@ -15,6 +15,7 @@
     "vite": "^6.4.2"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@sakun/system.css": "github:sakofchit/system.css"
   }
 }
