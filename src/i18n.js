@@ -1,4 +1,14 @@
-export const translations = {
+const deepFreeze = (obj) => {
+  Object.freeze(obj);
+  for (const val of Object.values(obj)) {
+    if (typeof val === "object" && val !== null && !Object.isFrozen(val)) {
+      deepFreeze(val);
+    }
+  }
+  return obj;
+};
+
+export const translations = deepFreeze({
   es: {
     nav: {
       about: "Sobre mí",
@@ -157,5 +167,5 @@ export const translations = {
       rights: "All rights reserved.",
     },
   },
-};
+});
 

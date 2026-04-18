@@ -2,35 +2,32 @@ import "./style.css";
 import { translations } from "./i18n.js";
 import { sendContactEmail } from "./emailjs.js";
 
-let currentLang = localStorage.getItem("lang") || "es";
+let currentLang = localStorage.getItem("lang") ?? "es";
 
-function t(path) {
-  return path
-    .split(".")
-    .reduce((obj, key) => (obj ? obj[key] : undefined), translations[currentLang]);
-}
+const t = (path) =>
+  path.split(".").reduce((obj, key) => obj?.[key], translations[currentLang]);
 
-function setLang(lang) {
+const setLang = (lang) => {
   currentLang = lang;
   localStorage.setItem("lang", lang);
   document.documentElement.lang = lang;
   render();
   updateLangButtons();
-}
+};
 
-function updateLangButtons() {
+const updateLangButtons = () => {
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === currentLang);
   });
-}
-
-const skills = {
-  frontend: ["Angular", "SCSS", "Vanilla JS", "TypeScript", "React", "AngularJS"],
-  backend: ["Node.js", "Python", "Express", "PostgreSQL", "MongoDB", ".NET", "PHP"],
-  tools: ["Git", "Vercel", "Vite", "Figma", "Bootstrap", "Azure"],
 };
 
-function render() {
+const skills = Object.freeze({
+  frontend: ["Angular", "SCSS", "Vanilla JS", "TypeScript", "React", "AngularJS"],
+  backend:  ["Node.js", "Python", "Express", "PostgreSQL", "MongoDB", ".NET", "PHP"],
+  tools:    ["Git", "Vercel", "Vite", "Figma", "Bootstrap", "Azure"],
+});
+
+const render = () => {
   renderMenuBar();
   renderHero();
   renderAbout();
@@ -38,10 +35,11 @@ function render() {
   renderProjects();
   renderContact();
   renderFooter();
-}
+};
 
-function renderMenuBar() {
+const renderMenuBar = () => {
   const nav = document.getElementById("main-nav");
+
   nav.innerHTML = `
     <ul role="menu-bar">
       <li role="menu-item" tabindex="0" aria-haspopup="true" class="apple-menu">
@@ -76,20 +74,24 @@ function renderMenuBar() {
       <li role="menu-item" aria-haspopup="false" class="menu-clock" id="menu-clock"></li>
     </ul>
   `;
+
   nav.querySelectorAll(".lang-btn").forEach((btn) =>
     btn.addEventListener("click", () => setLang(btn.dataset.lang))
   );
-  updateClock();
-}
 
-function updateClock() {
+  updateClock();
+};
+
+const updateClock = () => {
   const el = document.getElementById("menu-clock");
   if (!el) return;
-  const now = new Date();
-  el.textContent = now.toLocaleTimeString(currentLang, { hour: "2-digit", minute: "2-digit" });
-}
+  el.textContent = new Date().toLocaleTimeString(currentLang, {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
 
-function renderHero() {
+const renderHero = () => {
   document.getElementById("hero").innerHTML = `
     <div class="window standard-dialog hero-window">
       <div class="title-bar">
@@ -110,9 +112,9 @@ function renderHero() {
       </div>
     </div>
   `;
-}
+};
 
-function renderAbout() {
+const renderAbout = () => {
   document.getElementById("about").innerHTML = `
     <div class="window modeless-dialog">
       <div class="title-bar">
@@ -132,18 +134,19 @@ function renderAbout() {
       </div>
     </div>
   `;
-}
+};
 
-function renderSkills() {
-  const categories = ["frontend", "backend", "tools"];
-  const panels = categories.map((cat) => `
-    <div class="skill-panel">
-      <p class="subheading">${t("skills." + cat)}</p>
-      <div class="skill-tags">
-        ${skills[cat].map((s) => `<span class="skill-tag">${s}</span>`).join("")}
+const renderSkills = () => {
+  const panels = Object.entries(skills)
+    .map(([cat, items]) => `
+      <div class="skill-panel">
+        <p class="subheading">${t(`skills.${cat}`)}</p>
+        <div class="skill-tags">
+          ${items.map((s) => `<span class="skill-tag">${s}</span>`).join("")}
+        </div>
       </div>
-    </div>
-  `).join("");
+    `)
+    .join("");
 
   document.getElementById("skills").innerHTML = `
     <div class="window modeless-dialog">
@@ -159,11 +162,18 @@ function renderSkills() {
       </div>
     </div>
   `;
-}
+};
 
-function renderProjects() {
-  const projects = t("projects.items");
-  const cards = projects.map((p) => `
+const projectCard = (p) => {
+  const codeBtn = p.viewCode
+    ? `<a href="${p.viewCode}" target="_blank" rel="noopener"><button class="btn">${t("projects.viewCode")}</button></a>`
+    : `<button class="btn" disabled>${t("projects.viewCode")}</button>`;
+
+  const demoBtn = p.viewDemo
+    ? `<a href="${p.viewDemo}" target="_blank" rel="noopener"><button class="btn">${t("projects.viewDemo")}</button></a>`
+    : `<button class="btn btn-default" disabled>${t("projects.viewDemo")}</button>`;
+
+  return `
     <div class="window modeless-dialog project-card">
       <div class="title-bar">
         <button aria-label="Close" class="close"></button>
@@ -177,13 +187,14 @@ function renderProjects() {
           ${p.tags.map((tag) => `<span class="skill-tag">${tag}</span>`).join("")}
         </div>
         <div class="separator"></div>
-        <div class="project-actions">
-          ${p.viewCode ? `<a href="${p.viewCode}" target="_blank" rel="noopener"><button class="btn">${t("projects.viewCode")}</button></a>` : `<button class="btn" disabled>${t("projects.viewCode")}</button>`}
-          ${p.viewDemo && p.viewDemo !== "Demo" ? `<a href="${p.viewDemo}" target="_blank" rel="noopener"><button class="btn">${t("projects.viewDemo")}</button></a>` : `<button class="btn btn-default" disabled>${t("projects.viewDemo")}</button>`}
-        </div>
+        <div class="project-actions">${codeBtn}${demoBtn}</div>
       </div>
     </div>
-  `).join("");
+  `;
+};
+
+const renderProjects = () => {
+  const cards = t("projects.items").map(projectCard).join("");
 
   document.getElementById("projects").innerHTML = `
     <div class="window modeless-dialog">
@@ -199,9 +210,9 @@ function renderProjects() {
       </div>
     </div>
   `;
-}
+};
 
-function renderContact() {
+const renderContact = () => {
   document.getElementById("contact").innerHTML = `
     <div class="window modeless-dialog">
       <div class="title-bar">
@@ -230,32 +241,6 @@ function renderContact() {
     </div>
   `;
 
-  document.getElementById("contact-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const name    = document.getElementById("contact-name").value.trim();
-    const email   = document.getElementById("contact-email").value.trim();
-    const message = document.getElementById("contact-message").value.trim();
-    const status  = document.getElementById("contact-status");
-    const submit  = document.getElementById("contact-submit");
-
-    submit.disabled = true;
-    status.className = "contact-status contact-status--loading";
-    status.textContent = t("contact.sending");
-
-    try {
-      await sendContactEmail({ name, email, message });
-      status.className = "contact-status contact-status--success";
-      status.textContent = t("contact.success");
-      document.getElementById("contact-form").reset();
-    } catch (err) {
-      console.error("EmailJS error:", err);
-      status.className = "contact-status contact-status--error";
-      status.textContent = t("contact.error");
-    } finally {
-      submit.disabled = false;
-    }
-  });
-
   document.getElementById("social").innerHTML = `
     <div class="window modeless-dialog">
       <div class="title-bar">
@@ -273,21 +258,57 @@ function renderContact() {
       </div>
     </div>
   `;
-}
 
-function renderFooter() {
+  document.getElementById("contact-form").addEventListener("submit", handleContactSubmit);
+};
+
+const handleContactSubmit = async (e) => {
+  e.preventDefault();
+
+  const name    = document.getElementById("contact-name").value.trim();
+  const email   = document.getElementById("contact-email").value.trim();
+  const message = document.getElementById("contact-message").value.trim();
+  const status  = document.getElementById("contact-status");
+  const submit  = document.getElementById("contact-submit");
+
+  const setStatus = (modifier, text) => {
+    status.className = `contact-status${modifier ? ` contact-status--${modifier}` : ""}`;
+    status.textContent = text;
+  };
+
+  submit.disabled = true;
+  setStatus("loading", t("contact.sending"));
+
+  try {
+    await sendContactEmail({ name, email, message });
+    setStatus("success", t("contact.success"));
+    e.target.reset();
+  } catch (err) {
+    console.error("EmailJS error:", err);
+    setStatus("error", t("contact.error"));
+  } finally {
+    submit.disabled = false;
+  }
+};
+
+const renderFooter = () => {
+  const year = new Date().getFullYear();
   document.getElementById("main-footer").innerHTML = `
     <div class="details-bar">
       <span>${t("footer.built")} &#x2764; ${t("footer.and")} vanilla JS</span>
-      <span>&#xa9; ${new Date().getFullYear()} ${t("hero.name")} &#x2014; ${t("footer.rights")}</span>
+      <span>&#xa9; ${year} ${t("hero.name")} &#x2014; ${t("footer.rights")}</span>
       <span>system.css</span>
     </div>
   `;
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   render();
-  const clockInterval = setInterval(updateClock, 30000);
-  window.addEventListener("beforeunload", () => clearInterval(clockInterval));
-});
 
+  const ac = new AbortController();
+  const clockId = setInterval(updateClock, 30_000);
+  window.addEventListener("beforeunload", () => {
+    clearInterval(clockId);
+    ac.abort();
+  }, { signal: ac.signal });
+});
